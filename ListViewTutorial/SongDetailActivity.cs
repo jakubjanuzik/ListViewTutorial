@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
+
 namespace ListViewTutorial
 {
 	[Activity (Label = "SongDetailActivity")]			
@@ -34,12 +35,10 @@ namespace ListViewTutorial
 				_song = new Song ();	
 
 			UpdateUI ();
-			
 		}
 
 		protected void UpdateUI() 
 		{
-			Console.WriteLine ("Inside UpdateUI");
 			_titleEditText.Text = _song.Title;
 			_artistEditText.Text = _song.Artist;
 		}
