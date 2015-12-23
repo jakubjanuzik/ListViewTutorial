@@ -60,6 +60,8 @@
     <Compile Include="SongData.cs" />
     <Compile Include="SongListViewAdapter.cs" />
     <Compile Include="SongDetailActivity.cs" />
+    <Compile Include="ServerConnectionActivity.cs" />
+    <Compile Include="SocketHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -89,6 +91,7 @@
     <AndroidResource Include="Resources\drawable\ic_save.png" />
     <AndroidResource Include="Resources\layout\SongDetail.axml" />
     <AndroidResource Include="Resources\menu\SongDetailMenu.xml" />
+    <AndroidResource Include="Resources\layout\ServerConnectionLayout.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

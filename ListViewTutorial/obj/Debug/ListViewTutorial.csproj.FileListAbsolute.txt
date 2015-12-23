@@ -35,3 +35,4 @@ C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\bin\De
 C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\obj\Debug\android\bin\com.jakubjanuzik.ListViewTutorial.apk
 C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\obj\Debug\res\layout\songdetail.xml
 C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\obj\Debug\res\menu\songdetailmenu.xml
+C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\obj\Debug\res\layout\serverconnectionlayout.xml

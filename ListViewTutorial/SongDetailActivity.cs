@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using System.Net.Sockets;
 
 
 namespace ListViewTutorial
@@ -20,6 +21,8 @@ namespace ListViewTutorial
 		//Intent songDetailIntent = new Intent (this, typeof(SongDetailActivity));
 		EditText _titleEditText;
 		EditText _artistEditText;
+		Button _playPauseButton;
+		Button _stopButton;
 		Song _song;
 		protected override void OnCreate (Bundle savedInstanceState)
 		{
@@ -27,7 +30,15 @@ namespace ListViewTutorial
 			SetContentView (Resource.Layout.SongDetail);
 			_titleEditText = FindViewById<EditText> (Resource.Id.titleEditText);
 			_artistEditText = FindViewById<EditText> (Resource.Id.artistEditText);
-			// Create your application here
+			_playPauseButton = FindViewById<Button> (Resource.Id.playPauseButton);
+			_stopButton = FindViewById<Button> (Resource.Id.stopButton);
+			_playPauseButton.Click += delegate {
+				PlayPauseButtonClicked();
+			};
+			_stopButton.Click += delegate {
+				StopButtonClicked();
+			};
+		
 			if (Intent.HasExtra ("songId")) {
 				int songId = Intent.GetIntExtra ("songId", -1);
 				_song = SongData.Service.GetSong (songId);
@@ -106,6 +117,24 @@ namespace ListViewTutorial
 		{
 			SongData.Service.DeleteSong (_song);
 			Finish ();
+		}
+
+		protected void PlayPauseButtonClicked()
+		{
+			if (_playPauseButton.Text == "Play") {
+				Console.WriteLine ("Button Play Clicked");
+				_playPauseButton.Text = "Pause";
+			} else {
+				Console.WriteLine ("Button Pause Clicked");
+				_playPauseButton.Text = "Play";
+			}
+		}
+
+		protected void StopButtonClicked()
+		{
+			if (_playPauseButton.Text == "Pause")
+				_playPauseButton.Text = "Play";
+			Console.WriteLine ("Button has been clicked, song should stop");
 		}
 	}
 }
