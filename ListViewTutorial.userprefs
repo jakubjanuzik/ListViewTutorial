@@ -1,29 +1,12 @@
 ﻿<Properties StartupItem="ListViewTutorial\ListViewTutorial.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 5 (Lollipop)" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ListViewTutorial\SongListActivity.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ListViewTutorial\ServerConnectionActivity.cs">
     <Files>
-      <File FileName="ListViewTutorial\SongListActivity.cs" Line="33" Column="37" />
-      <File FileName="ListViewTutorial\SongDetailActivity.cs" Line="45" Column="4" />
-      <File FileName="ListViewTutorial\Resources\menu\SongListView.xml" Line="1" Column="1" />
+      <File FileName="ListViewTutorial\SongListActivity.cs" Line="1" Column="1" />
+      <File FileName="ListViewTutorial\SongDetailActivity.cs" Line="1" Column="1" />
+      <File FileName="ListViewTutorial\SocketHandler.cs" Line="36" Column="19" />
+      <File FileName="ListViewTutorial\ServerConnectionActivity.cs" Line="49" Column="19" NotebookId="1" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="ListViewTutorial" expanded="True">
-            <Node name="ListViewTutorial" expanded="True">
-              <Node name="Assets" expanded="True">
-                <Node name="data" expanded="True" />
-              </Node>
-              <Node name="Properties" expanded="True" />
-              <Node name="Resources" expanded="True">
-                <Node name="layout" expanded="True" />
-              </Node>
-              <Node name="SongDetailActivity.cs" selected="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

@@ -14,15 +14,15 @@
         <EditText
             p1:layout_width="match_parent"
             p1:layout_height="wrap_content"
-            p1:inputType="textCapWords"
+            p1:inputType="none"
             p1:id="@+id/titleEditText" />
         <EditText
             p1:layout_width="match_parent"
             p1:layout_height="wrap_content"
-            p1:inputType="textCapWords"
+            p1:inputType="none"
             p1:id="@+id/artistEditText" />
         <Button
-            p1:text="Play"
+            p1:text="Pause"
             p1:layout_width="match_parent"
             p1:layout_height="wrap_content"
             p1:id="@+id/playPauseButton" />

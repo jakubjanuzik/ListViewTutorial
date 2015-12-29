@@ -3,6 +3,10 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Net;
 using System.Text;
+using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace ListViewTutorial
 {
@@ -15,6 +19,8 @@ namespace ListViewTutorial
 			new ManualResetEvent(false);
 		private static ManualResetEvent receiveDone = 
 			new ManualResetEvent(false);
+		public const int BufferSize = 16;
+		static string server_message = "Client accepted" + Char.MinValue;
 
 		public static Socket _socket {
 			get {
@@ -27,6 +33,7 @@ namespace ListViewTutorial
 		public static void ConnectToServer(IPEndPoint ip_endpoint, string password) {
 			try {
 				Console.WriteLine("Connecting...");
+				byte[] bytes = new byte[16];
 				_socket = new Socket(AddressFamily.InterNetwork, 
 					SocketType.Stream, ProtocolType.Tcp);
 
@@ -35,6 +42,14 @@ namespace ListViewTutorial
 				Console.WriteLine("Sending Password");
 				SendMessage(_socket, password);
 				sendDone.WaitOne ();
+
+				int bytesRec = _socket.Receive(bytes);
+				if (Encoding.Default.GetString(bytes, 0, bytesRec) != server_message) {
+					Console.WriteLine("Incorrect message, received {0}", Encoding.UTF8.GetString(bytes,0,bytesRec));
+					Console.WriteLine(server_message == Encoding.UTF8.GetString(bytes, 0, bytesRec));
+					Console.WriteLine(Encoding.UTF8.GetString(bytes,0,bytesRec));
+					throw new Exception();
+				} 
 				//socket.Shutdown(SocketShutdown.Both);
 				//socket.Close();
 				Console.WriteLine("Finished Connection");
@@ -80,6 +95,53 @@ namespace ListViewTutorial
 			} catch (Exception e) {
 				Console.WriteLine(e.ToString());
 			}
+		}
+		public static List<Song> GetListFromServer ()
+		{			
+			List<Song> songs = new List<Song> ();
+			Console.WriteLine("Reading from server");
+			byte[] byteData = Encoding.ASCII.GetBytes ("ll\0");
+			SocketHandler.socket.BeginSend (byteData, 0, byteData.Length, 0,
+				new AsyncCallback (SendCallback), SocketHandler.socket);
+			Console.WriteLine("Sent Message, waiting for JSON");
+			string jsonString = "";
+			int size = 8;
+			byte[] bytes = new byte[size];
+			int offset = 0;
+			int bytesReadNum = 0;
+
+			//	NetworkStream netStream = new NetworkStream (SocketHandler.socket);
+			//bytesReadNum = netStream.Read (bytes, offset, size);
+			//Console.WriteLine ("Read " + System.Text.Encoding.UTF8.GetString (bytes));
+			//do {
+			//	Console.WriteLine ("Read from server" + System.Text.Encoding.UTF8.GetString (bytes));
+			//	jsonString += System.Text.Encoding.UTF8.GetString (bytes);
+			//	Array.Clear (bytes, 0, bytes.Length);
+			//	offset += bytesReadNum;
+			//	Console.WriteLine ("Message is: " + jsonString);
+			//	bytesReadNum = netStream.Read (bytes, offset, size);
+		//
+		//	} while (bytesReadNum != 0);,
+
+			bytesReadNum = socket.Receive(bytes);
+			Console.WriteLine (bytesReadNum);
+			do {
+					Console.WriteLine ("Read from server" + System.Text.Encoding.UTF8.GetString (bytes));
+					jsonString += System.Text.Encoding.Default.GetString (bytes);
+					Array.Clear (bytes, 0, bytes.Length);
+					offset += bytesReadNum;
+					Console.WriteLine ("Message is: " + jsonString);
+					bytesReadNum = socket.Receive(bytes);
+			
+				} while (bytesReadNum != 0);
+				Console.WriteLine ("Json string is: " + jsonString);
+				JObject json = JObject.Parse (jsonString);
+
+				foreach (JToken track in json["tracks"].Children()) {
+					Song song = JsonConvert.DeserializeObject<Song> (track.ToString ());
+					songs.Add (song);
+				}
+			return songs;
 		}
 	}
 }

@@ -18,7 +18,6 @@ namespace ListViewTutorial
 	[Activity (Label = "SongDetailActivity")]			
 	public class SongDetailActivity : Activity
 	{
-		//Intent songDetailIntent = new Intent (this, typeof(SongDetailActivity));
 		EditText _titleEditText;
 		EditText _artistEditText;
 		Button _playPauseButton;
@@ -42,6 +41,7 @@ namespace ListViewTutorial
 			if (Intent.HasExtra ("songId")) {
 				int songId = Intent.GetIntExtra ("songId", -1);
 				_song = SongData.Service.GetSong (songId);
+				SocketHandler.SendMessage (SocketHandler._socket, "plRick.mp3\0");
 			} else
 				_song = new Song ();	
 
@@ -54,78 +54,15 @@ namespace ListViewTutorial
 			_artistEditText.Text = _song.Artist;
 		}
 
-		public override bool OnCreateOptionsMenu(IMenu menu)
-		{
-			MenuInflater.Inflate (Resource.Menu.SongDetailMenu, menu);
-			return base.OnCreateOptionsMenu (menu);
-		}
-
-		public override bool OnOptionsItemSelected(IMenuItem item)
-		{
-			switch (item.ItemId) 
-			{
-			case Resource.Id.actionSave:
-				SaveSong();
-				return true;
-
-			case Resource.Id.actionDelete:
-				DeleteSong ();
-				return true;
-			default:
-				return base.OnOptionsItemSelected (item);
-			}
-		}
-
-		public override bool OnPrepareOptionsMenu (IMenu menu)
-		{
-			base.OnPrepareOptionsMenu (menu);
-
-			if (!_song.Id.HasValue) {
-				IMenuItem item = menu.FindItem (Resource.Id.actionDelete);
-				item.SetEnabled (false);
-			}
-			return true;
-		}
-
-		protected void SaveSong()
-		{
-			bool errors = false;
-
-			if (string.IsNullOrEmpty (_song.Artist = _artistEditText.Text)) {
-				_artistEditText.Error = "Cannot be empty";
-				errors = true;
-			}
-			else
-				_artistEditText.Error =  null;
-
-			if (string.IsNullOrEmpty (_song.Artist = _titleEditText.Text)) {
-			_titleEditText.Error = "Cannot be empty";
-			errors = true;
-			}
-			else
-				_titleEditText.Error = null;
-			if (!errors) {
-				_song.Artist = _artistEditText.Text;
-				_song.Title = _titleEditText.Text;
-
-				SongData.Service.SaveSong (_song);
-				Finish ();
-			}
-		}
-
-		protected void DeleteSong()
-		{
-			SongData.Service.DeleteSong (_song);
-			Finish ();
-		}
-
 		protected void PlayPauseButtonClicked()
 		{
 			if (_playPauseButton.Text == "Play") {
 				Console.WriteLine ("Button Play Clicked");
+				SocketHandler.SendMessage (SocketHandler._socket, "pl\0");
 				_playPauseButton.Text = "Pause";
 			} else {
 				Console.WriteLine ("Button Pause Clicked");
+				SocketHandler.SendMessage (SocketHandler._socket, "sp\0");
 				_playPauseButton.Text = "Play";
 			}
 		}
@@ -135,6 +72,7 @@ namespace ListViewTutorial
 			if (_playPauseButton.Text == "Pause")
 				_playPauseButton.Text = "Play";
 			Console.WriteLine ("Button has been clicked, song should stop");
+			SocketHandler.SendMessage (SocketHandler._socket, "ss\0");
 		}
 	}
 }
