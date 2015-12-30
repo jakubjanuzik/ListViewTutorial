@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -98,17 +99,19 @@ namespace ListViewTutorial
 		}
 		public static List<Song> GetListFromServer ()
 		{			
+			string jsonString;
+			int size = 8;
+			byte[] buffer = new byte[size];
+			int received = 0;
+			StringBuilder strBuild = new StringBuilder ("");
 			List<Song> songs = new List<Song> ();
+
+
 			Console.WriteLine("Reading from server");
 			byte[] byteData = Encoding.ASCII.GetBytes ("ll\0");
 			SocketHandler.socket.BeginSend (byteData, 0, byteData.Length, 0,
 				new AsyncCallback (SendCallback), SocketHandler.socket);
 			Console.WriteLine("Sent Message, waiting for JSON");
-			string jsonString = "";
-			int size = 8;
-			byte[] bytes = new byte[size];
-			int offset = 0;
-			int bytesReadNum = 0;
 
 			//	NetworkStream netStream = new NetworkStream (SocketHandler.socket);
 			//bytesReadNum = netStream.Read (bytes, offset, size);
@@ -122,25 +125,32 @@ namespace ListViewTutorial
 			//	bytesReadNum = netStream.Read (bytes, offset, size);
 		//
 		//	} while (bytesReadNum != 0);,
+			socket.ReceiveTimeout = 1000;
+			List<byte> responseBytes =	new List<byte>();
+			try {
+				do {
+					received = socket.Receive(buffer);
+					Console.WriteLine ("Read from server" + System.Text.Encoding.UTF8.GetString (buffer));
+					//strBuild.Append(System.Text.Encoding.ASCII.GetString (bytes));
+					responseBytes.AddRange(buffer.Take(received));
+					Console.WriteLine ("Message is: " + responseBytes);
+					Console.WriteLine ("received " + received);
+				} while (received > 0);
+			} catch (SocketException ex) {
+				Console.WriteLine ("exception!");
+				Console.WriteLine (ex.ToString ());
+			}
 
-			bytesReadNum = socket.Receive(bytes);
-			Console.WriteLine (bytesReadNum);
-			do {
-					Console.WriteLine ("Read from server" + System.Text.Encoding.UTF8.GetString (bytes));
-					jsonString += System.Text.Encoding.Default.GetString (bytes);
-					Array.Clear (bytes, 0, bytes.Length);
-					offset += bytesReadNum;
-					Console.WriteLine ("Message is: " + jsonString);
-					bytesReadNum = socket.Receive(bytes);
-			
-				} while (bytesReadNum != 0);
-				Console.WriteLine ("Json string is: " + jsonString);
-				JObject json = JObject.Parse (jsonString);
+	
+			jsonString = System.Text.Encoding.ASCII.GetString(responseBytes.ToArray());
+			jsonString = jsonString.Remove(jsonString.Length - 2); // Small fix for last characters
+			Console.WriteLine ("Json string is: " + jsonString);
+			JObject json = JObject.Parse (jsonString);
 
-				foreach (JToken track in json["tracks"].Children()) {
-					Song song = JsonConvert.DeserializeObject<Song> (track.ToString ());
-					songs.Add (song);
-				}
+			foreach (JToken track in json["tracks"].Children()) {
+				Song song = JsonConvert.DeserializeObject<Song> (track.ToString ());
+				songs.Add (song);
+			}
 			return songs;
 		}
 	}

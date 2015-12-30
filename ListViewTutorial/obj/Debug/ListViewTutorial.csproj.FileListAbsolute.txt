@@ -1,3 +1,5 @@
+C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\obj\Debug\res\drawable\monoandroidsplash.png
+C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\obj\Debug\res\values\styles.xml
 C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\bin\Debug\ListViewTutorial.dll
 C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\bin\Debug\ListViewTutorial.pdb
 C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\bin\Debug\com.jakubjanuzik.ListViewTutorial.apk
@@ -6,8 +8,6 @@ C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\bin\De
 C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\bin\Debug\Xamarin.Insights.dll
 C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\bin\Debug\Xamarin.Insights.xml
 C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\obj\Debug\res\drawable\monoandroidsplash.png
-C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\obj\Debug\res\values\styles.xml
 C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\obj\Debug\ListViewTutorial.dll
 C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\obj\Debug\ListViewTutorial.pdb
 C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\obj\Debug\android\bin\com.jakubjanuzik.ListViewTutorial.apk

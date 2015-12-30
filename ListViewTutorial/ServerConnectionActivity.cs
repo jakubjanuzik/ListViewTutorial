@@ -71,7 +71,8 @@ namespace ListViewTutorial
 					Console.WriteLine ("Saving song");
 					SongData.Service.SaveSong (song);
 				}
-
+				Console.WriteLine ("Finishing");
+				Finish();
 			}
 		}
 		protected bool OnBackButtonPressed()

@@ -15,12 +15,15 @@
             p1:layout_width="match_parent"
             p1:layout_height="wrap_content"
             p1:inputType="none"
-            p1:id="@+id/titleEditText" />
+            p1:id="@+id/titleEditText"
+            p1:enabled="true"
+            p1:editable="false" />
         <EditText
             p1:layout_width="match_parent"
             p1:layout_height="wrap_content"
             p1:inputType="none"
-            p1:id="@+id/artistEditText" />
+            p1:id="@+id/artistEditText"
+            p1:editable="false" />
         <Button
             p1:text="Pause"
             p1:layout_width="match_parent"

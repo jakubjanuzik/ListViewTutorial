@@ -39,18 +39,18 @@ namespace ListViewTutorial
 		}
 		public void SaveSong (Song song)
 		{
-			Boolean newSong = false;
+			//	Boolean newSong = false;
 			if (!song.Id.HasValue) {
 				song.Id = GetNextId ();
-				newSong = true;
+				//newSong = true;
 			}
+			//
+			//string songString = JsonConvert.SerializeObject (song);
+			//
+			//File.WriteAllText (GetFilename (song.Id.Value), songString);
 
-			string songString = JsonConvert.SerializeObject (song);
-
-			File.WriteAllText (GetFilename (song.Id.Value), songString);
-
-			if (newSong)
-				_songs.Add (song);
+			//if (newSong)
+			_songs.Add (song);
 		}
 		public void DeleteSong (Song song)
 		{

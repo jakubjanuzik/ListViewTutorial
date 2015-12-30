@@ -41,7 +41,11 @@ namespace ListViewTutorial
 			if (Intent.HasExtra ("songId")) {
 				int songId = Intent.GetIntExtra ("songId", -1);
 				_song = SongData.Service.GetSong (songId);
-				SocketHandler.SendMessage (SocketHandler._socket, "plRick.mp3\0");
+				if (!String.IsNullOrEmpty(_song.Path)) {
+					SocketHandler.SendMessage (SocketHandler._socket, "pl" + _song.Path + "\0");
+				} else {
+					SocketHandler.SendMessage (SocketHandler._socket, "plRick.mp3\0");
+				}
 			} else
 				_song = new Song ();	
 

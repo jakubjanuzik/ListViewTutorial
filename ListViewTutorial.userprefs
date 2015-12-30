@@ -1,12 +1,36 @@
 ﻿<Properties StartupItem="ListViewTutorial\ListViewTutorial.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 5 (Lollipop)" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ListViewTutorial\ServerConnectionActivity.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ListViewTutorial\SocketHandler.cs">
     <Files>
-      <File FileName="ListViewTutorial\SongListActivity.cs" Line="1" Column="1" />
-      <File FileName="ListViewTutorial\SongDetailActivity.cs" Line="1" Column="1" />
-      <File FileName="ListViewTutorial\SocketHandler.cs" Line="36" Column="19" />
-      <File FileName="ListViewTutorial\ServerConnectionActivity.cs" Line="49" Column="19" NotebookId="1" />
+      <File FileName="ListViewTutorial\SongListActivity.cs" Line="48" Column="37" />
+      <File FileName="ListViewTutorial\SongDetailActivity.cs" Line="20" Column="3" />
+      <File FileName="ListViewTutorial\SocketHandler.cs" Line="138" Column="47" />
+      <File FileName="ListViewTutorial\SongDataService.cs" Line="1" Column="1" />
+      <File FileName="ListViewTutorial\SongData.cs" Line="1" Column="1" />
+      <File FileName="ListViewTutorial\Song.cs" Line="5" Column="2" />
+      <File FileName="ListViewTutorial\Resources\menu\SongListView.xml" Line="1" Column="1" />
+      <File FileName="ListViewTutorial\ServerConnectionActivity.cs" Line="49" Column="60" />
+      <File FileName="ListViewTutorial\packages.config" Line="1" Column="1" />
+      <File FileName="ListViewTutorial\SongJsonService.cs" Line="56" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ListViewTutorial" expanded="True">
+            <Node name="ListViewTutorial" expanded="True">
+              <Node name="Resources" expanded="True">
+                <Node name="layout" expanded="True" />
+                <Node name="menu" expanded="True" />
+              </Node>
+              <Node name="SocketHandler.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
