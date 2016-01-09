@@ -1,5 +1,3 @@
-C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\obj\Debug\res\drawable\monoandroidsplash.png
-C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\obj\Debug\res\values\styles.xml
 C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\bin\Debug\ListViewTutorial.dll
 C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\bin\Debug\ListViewTutorial.pdb
 C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\bin\Debug\com.jakubjanuzik.ListViewTutorial.apk
@@ -35,3 +33,4 @@ C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\obj\De
 C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\obj\Debug\res\layout\serverconnectionlayout.xml
 C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\obj\Debug\R.cs.flag
 C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\obj\Debug\uploadflags.txt
+C:\Users\Kuba-Laptop\Documents\Projects\ListViewTutorial\ListViewTutorial\obj\Debug\ListViewTutorial.csprojResolveAssemblyReference.cache

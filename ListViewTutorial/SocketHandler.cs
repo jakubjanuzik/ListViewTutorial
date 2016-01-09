@@ -100,48 +100,31 @@ namespace ListViewTutorial
 		public static List<Song> GetListFromServer ()
 		{			
 			string jsonString;
-			int size = 8;
+			int size = 64;
 			byte[] buffer = new byte[size];
 			int received = 0;
 			StringBuilder strBuild = new StringBuilder ("");
 			List<Song> songs = new List<Song> ();
 
-
 			Console.WriteLine("Reading from server");
 			byte[] byteData = Encoding.ASCII.GetBytes ("ll\0");
 			SocketHandler.socket.BeginSend (byteData, 0, byteData.Length, 0,
 				new AsyncCallback (SendCallback), SocketHandler.socket);
+			SocketHandler.socket.SendTimeout = 5000;
 			Console.WriteLine("Sent Message, waiting for JSON");
-
-			//	NetworkStream netStream = new NetworkStream (SocketHandler.socket);
-			//bytesReadNum = netStream.Read (bytes, offset, size);
-			//Console.WriteLine ("Read " + System.Text.Encoding.UTF8.GetString (bytes));
-			//do {
-			//	Console.WriteLine ("Read from server" + System.Text.Encoding.UTF8.GetString (bytes));
-			//	jsonString += System.Text.Encoding.UTF8.GetString (bytes);
-			//	Array.Clear (bytes, 0, bytes.Length);
-			//	offset += bytesReadNum;
-			//	Console.WriteLine ("Message is: " + jsonString);
-			//	bytesReadNum = netStream.Read (bytes, offset, size);
-		//
-		//	} while (bytesReadNum != 0);,
-			socket.ReceiveTimeout = 1000;
+			SocketHandler.socket.ReceiveTimeout = 5000;
 			List<byte> responseBytes =	new List<byte>();
 			try {
 				do {
 					received = socket.Receive(buffer);
 					Console.WriteLine ("Read from server" + System.Text.Encoding.UTF8.GetString (buffer));
-					//strBuild.Append(System.Text.Encoding.ASCII.GetString (bytes));
 					responseBytes.AddRange(buffer.Take(received));
-					Console.WriteLine ("Message is: " + responseBytes);
 					Console.WriteLine ("received " + received);
 				} while (received > 0);
 			} catch (SocketException ex) {
 				Console.WriteLine ("exception!");
 				Console.WriteLine (ex.ToString ());
 			}
-
-	
 			jsonString = System.Text.Encoding.ASCII.GetString(responseBytes.ToArray());
 			jsonString = jsonString.Remove(jsonString.Length - 2); // Small fix for last characters
 			Console.WriteLine ("Json string is: " + jsonString);
