@@ -13,7 +13,7 @@ using System.Text;
 
 namespace ListViewTutorial
 {
-	[Activity (Label = "ListViewTutorial", MainLauncher = true, Icon = "@mipmap/icon")]
+	[Activity (Label = "Music Client", MainLauncher = true, Icon = "@mipmap/icon")]
 	public class SongListActivity : Activity
 	{
 		private ListView _songListView;
@@ -55,7 +55,6 @@ namespace ListViewTutorial
 
 		protected void SongClicked(object sender, ListView.ItemClickEventArgs e)
 		{
-			//SendMessage (socket, "test\n");
 			Intent songDetailIntent = new Intent (this, typeof(SongDetailActivity));
 			songDetailIntent.PutExtra ("songId", (int) e.Id);
 			StartActivity (songDetailIntent);

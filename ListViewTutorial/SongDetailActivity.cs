@@ -15,7 +15,7 @@ using System.Net.Sockets;
 
 namespace ListViewTutorial
 {
-	[Activity (Label = "SongDetailActivity")]			
+	[Activity (Label = "Song Details")]			
 	public class SongDetailActivity : Activity
 	{
 		EditText _titleEditText;

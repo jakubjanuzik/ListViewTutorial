@@ -15,7 +15,7 @@ using System.Net;
 
 namespace ListViewTutorial
 {
-	[Activity (Label = "ServerConnectionActivity")]			
+	[Activity (Label = "Server Connection")]			
 	public class ServerConnectionActivity : Activity
 	{
 		EditText _serverIpText;
@@ -50,9 +50,7 @@ namespace ListViewTutorial
 			} catch(Exception) {
 				errors = 1;
 			}
-
-			// Some Try-except here, if wrong connection, return errors, else disappear
-			//Intent songListActivityIntent = new Intent(this, typeof(SongListActivity));
+				
 			Console.WriteLine ("Connect button clicked");
 
 			if (errors != 0) {

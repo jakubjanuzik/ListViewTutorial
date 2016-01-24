@@ -51,8 +51,6 @@ namespace ListViewTutorial
 					Console.WriteLine(Encoding.UTF8.GetString(bytes,0,bytesRec));
 					throw new Exception();
 				} 
-				//socket.Shutdown(SocketShutdown.Both);
-				//socket.Close();
 				Console.WriteLine("Finished Connection");
 			} catch (Exception e) {
 				Console.WriteLine (e.ToString ());
